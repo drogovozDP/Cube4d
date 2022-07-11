@@ -15,5 +15,6 @@ To rotate the cube use the keys below:
 5. `s` - rotate `xz` axis.
 6. `d` - rotate `yz` axis.
 7. `-` - hold the minus statement to reverse the rotation angle.
+8. `space-bar` - reset vertexes.
 
 <img src="https://user-images.githubusercontent.com/48438477/178198636-b368c0e8-4265-438b-bcbc-04f7337cdbf2.jpg" width="400" height="300">

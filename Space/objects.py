@@ -6,18 +6,14 @@ from Space import constants
 
 class Object4D:
     def __init__(self, engine, object_name):
-        obj = constants.__dict__[object_name]
         self.engine = engine
-        self.size = SCALE
-        self.vertexes = np.array(obj["vertexes"]) * SCALE
+        self.reference = constants.__dict__[object_name]
+        self.vertexes = np.array(self.reference["vertexes"]) * SCALE
         self.vertexes[:, -1] = 1
-        self.faces = np.array(obj["faces"])
+        self.faces = np.array(self.reference["faces"])
         self.CENTER_W = self.engine.screen.get_width() // 2
         self.CENTER_H = self.engine.screen.get_height() // 2
-
-        # move to start of global coordinates
-        dx, dy, dz, dw = self.get_object_center()
-        self.move(-dx, -dy, -dz, -dw)
+        self.reset_vertexes()
 
     def get_object_center(self):
         return [self.vertexes[:, i].mean() for i in range(self.vertexes.shape[1] - 1)]
@@ -39,6 +35,13 @@ class Object4D:
             drawable_dots.append([a[0], a[1]])
         return drawable_dots
 
+    def reset_vertexes(self):
+        self.vertexes = np.array(self.reference["vertexes"]) * SCALE
+        self.vertexes[:, -1] = 1
+        # move to start of global coordinates
+        dx, dy, dz, dw = self.get_object_center()
+        self.move(-dx, -dy, -dz, -dw)
+
     def input_keys(self, keys):
         pg = self.engine.pg
         a = -ROTATE_ANGLE if keys[pg.K_MINUS] else ROTATE_ANGLE
@@ -54,6 +57,8 @@ class Object4D:
             self.rotate("xz", a)
         if keys[pg.K_d]:
             self.rotate("yz", a)
+        if keys[pg.K_SPACE]:
+            self.reset_vertexes()
 
     def test(self):
         dx, dy, dz, dw = self.get_object_center()
