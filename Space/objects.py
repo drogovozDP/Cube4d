@@ -6,7 +6,7 @@ from Space import constants
 
 class Object4D:
     def __init__(self, engine, object_name):
-        obj = vars(constants)[object_name]
+        obj = constants.__dict__[object_name]
         self.engine = engine
         self.size = SCALE
         self.vertexes = np.array(obj["vertexes"]) * SCALE
