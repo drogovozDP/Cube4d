@@ -15,3 +15,5 @@ To rotate the cube use the keys below:
 5. `s` - rotate `xz` axis.
 6. `d` - rotate `yz` axis.
 7. `-` - hold the minus statement to reverse angle of rotation.
+
+<img src="C:\Users\user\PycharmProjects\Engine4d\cube4d.jpg" width="400" height="300">
