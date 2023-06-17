@@ -3,15 +3,17 @@ from Space.constants import *
 
 
 class Engine:
-    WIDTH = WIDTH
-    HEIGHT = HEIGHT
     FPS = FPS
     pg = pygame
     pg.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     clock = pg.time.Clock()
     running = True
     objects = []
+
+    def __init__(self, width, height):
+        self.WIDTH = width
+        self.HEIGHT = height
+        self.screen = pygame.display.set_mode((width, height))
 
     def render(self):
         self.screen.fill(BG_COLOR)

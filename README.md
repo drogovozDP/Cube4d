@@ -4,7 +4,7 @@
 Execute steps below:
 1. Create `venv` with `python -m venv venv` command. Activate it. 
 2. Run `pip install -r requirements.txt` command. 
-3. Run `python main.py`.
+3. Run `python main.py --shape cube4d`.
 
 ## Cube rotation
 To rotate the cube use the keys below:

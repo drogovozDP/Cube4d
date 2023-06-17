@@ -1,13 +1,13 @@
 import pygame
 from Space.matrix import *
 from Space.constants import SCALE, CUBE_COLOR_1, ROTATE_ANGLE
-from Space import constants
+from Space import shapes
 
 
 class Object4D:
     def __init__(self, engine, object_name):
         self.engine = engine
-        self.reference = constants.__dict__[object_name]
+        self.reference = shapes.__dict__[object_name]
         self.vertexes = np.array(self.reference["vertexes"]) * SCALE
         self.vertexes[:, -1] = 1
         self.faces = np.array(self.reference["faces"])
